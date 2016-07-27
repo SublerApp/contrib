@@ -5,7 +5,7 @@ includedir=${prefix}/include
 
 Name: libavfilter
 Description: FFmpeg audio/video filtering library
-Version: 6.47.100
+Version: 6.49.100
 Requires: libswresample >= 2.1.100, libavutil >= 55.28.100
 Requires.private: 
 Conflicts:
