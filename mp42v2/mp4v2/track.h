@@ -267,6 +267,15 @@ MP4TrackId MP4AddJpegVideoTrack(
     uint16_t      height);
 
 MP4V2_EXPORT
+MP4TrackId MP4AddH265VideoTrack(
+    MP4FileHandle hFile,
+    uint32_t      timeScale,
+    MP4Duration   sampleDuration,
+    uint16_t      width,
+    uint16_t      height,
+    bool completeness );
+
+MP4V2_EXPORT
 MP4TrackId MP4AddH264VideoTrack(
     MP4FileHandle hFile,
     uint32_t      timeScale,
