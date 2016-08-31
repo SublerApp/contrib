@@ -122,6 +122,12 @@ typedef struct MP4Tags_s
     const char* acknowledgement;
     const char* conductor;
 
+    const char*     workName;
+    const char*     movementName;
+    const uint16_t* movementNumber;
+    const uint16_t* movementCount;
+    const uint8_t*  showWorkAndMovement;
+
     const char* linearNotes;
     const char* recordCompany;
     const char* originalArtist;
@@ -270,6 +276,12 @@ MP4V2_EXPORT bool MP4TagsSetArranger        ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetLyricist        ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetAcknowledgement ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetConductor       ( const MP4Tags*, const char* );
+
+MP4V2_EXPORT bool MP4TagsSetWorkName            ( const MP4Tags*, const char* );
+MP4V2_EXPORT bool MP4TagsSetMovementName        ( const MP4Tags*, const char* );
+MP4V2_EXPORT bool MP4TagsSetMovementNumber      ( const MP4Tags*, const uint16_t* );
+MP4V2_EXPORT bool MP4TagsSetMovementCount       ( const MP4Tags*, const uint16_t* );
+MP4V2_EXPORT bool MP4TagsSetShowWorkAndMovement ( const MP4Tags*, const uint8_t* );
 
 MP4V2_EXPORT bool MP4TagsSetLinearNotes       ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetRecordCompany     ( const MP4Tags*, const char* );
