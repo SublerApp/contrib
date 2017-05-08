@@ -1,12 +1,12 @@
 prefix=/Users/damians/Desktop/iffmpeg
 exec_prefix=${prefix}
-libdir=${prefix}/lib
-includedir=${prefix}/include
+libdir=/Users/damians/Desktop/iffmpeg/lib
+includedir=/Users/damians/Desktop/iffmpeg/include
 
 Name: libswresample
 Description: FFmpeg audio resampling library
-Version: 2.1.100
-Requires: libavutil >= 55.29.100
+Version: 2.8.100
+Requires: libavutil >= 55.61.100
 Requires.private: 
 Conflicts:
 Libs: -L${libdir}  -lswresample -lm

@@ -1,11 +1,11 @@
 prefix=/Users/damians/Desktop/iffmpeg
 exec_prefix=${prefix}
-libdir=${prefix}/lib
-includedir=${prefix}/include
+libdir=/Users/damians/Desktop/iffmpeg/lib
+includedir=/Users/damians/Desktop/iffmpeg/include
 
 Name: libavutil
 Description: FFmpeg utility library
-Version: 55.29.100
+Version: 55.61.100
 Requires: 
 Requires.private: 
 Conflicts:
