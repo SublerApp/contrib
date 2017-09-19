@@ -375,6 +375,12 @@ bool MP4SetTrackBytesProperty(
     const uint8_t* pValue,
     uint32_t       valueSize);
 
+MP4V2_EXPORT
+bool MP4SetTrackWantsRoll(
+    MP4FileHandle  hFile,
+    MP4TrackId     trackId,
+    bool wantsRoll);
+
 /** @} ***********************************************************************/
 
 #endif /* MP4V2_TRACK_PROP_H */
