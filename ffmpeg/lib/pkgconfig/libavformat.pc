@@ -5,10 +5,10 @@ includedir=/Users/damians/Desktop/iffmpeg/include
 
 Name: libavformat
 Description: FFmpeg container format library
-Version: 57.72.101
-Requires: libavcodec >= 57.94.101, libswresample >= 2.8.100, libavutil >= 55.61.100
+Version: 58.12.100
+Requires: libavcodec >= 58.18.100, libswresample >= 3.1.100, libavutil >= 56.14.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavformat -framework QuartzCore -framework VideoDecodeAcceleration -framework CoreFoundation -framework QuartzCore -framework CoreFoundation -framework AudioToolbox -framework CoreMedia -framework CoreFoundation -framework VideoToolbox -framework CoreMedia -framework CoreVideo -Wl,-framework,CoreFoundation -Wl,-framework,Security -lm -lbz2 -lz -pthread -pthread -framework CoreServices
+Libs: -L${libdir}  -lavformat -lm -lz
 Libs.private: 
 Cflags: -I${includedir}

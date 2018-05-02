@@ -5,8 +5,8 @@ includedir=/Users/damians/Desktop/iffmpeg/include
 
 Name: libavresample
 Description: Libav audio resampling library
-Version: 3.6.0
-Requires: libavutil >= 55.61.100
+Version: 4.0.0
+Requires: libavutil >= 56.14.100
 Requires.private: 
 Conflicts:
 Libs: -L${libdir}  -lavresample -lm
