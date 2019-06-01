@@ -18,14 +18,16 @@
 //
 ///////////////////////////////////////////////////////////////////////
 
-#ifndef TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H__
-#define TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H__
+#ifndef TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H_
+#define TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H_
 
-#include "platform.h"
-#include "pageiterator.h"
-#include "unicharset.h"
+#include "pageiterator.h"  // for PageIterator
+#include "platform.h"      // for TESS_API
+#include "publictypes.h"   // for PageIteratorLevel
+#include "unichar.h"       // for StrongScriptDirection
 
 class BLOB_CHOICE_IT;
+class PAGE_RES;
 class WERD_RES;
 
 namespace tesseract {
@@ -62,6 +64,7 @@ class TESS_API LTRResultIterator : public PageIterator {
                     int scale, int scaled_yres,
                     int rect_left, int rect_top,
                     int rect_width, int rect_height);
+
   virtual ~LTRResultIterator();
 
   // LTRResultIterators may be copied! This makes it possible to iterate over
@@ -91,6 +94,10 @@ class TESS_API LTRResultIterator : public PageIterator {
   // The number should be interpreted as a percent probability. (0.0f-100.0f)
   float Confidence(PageIteratorLevel level) const;
 
+  // Returns the attributes of the current row.
+  void RowAttributes(float* row_height, float* descenders,
+                     float* ascenders) const;
+
   // ============= Functions that refer to words only ============.
 
   // Returns the font attributes of the current word. If iterating at a higher
@@ -111,7 +118,7 @@ class TESS_API LTRResultIterator : public PageIterator {
                                  int* font_id) const;
 
   // Return the name of the language used to recognize this word.
-  // On error, NULL.  Do not delete this pointer.
+  // On error, nullptr.  Do not delete this pointer.
   const char* WordRecognitionLanguage() const;
 
   // Return the overall directionality of this word.
@@ -119,6 +126,9 @@ class TESS_API LTRResultIterator : public PageIterator {
 
   // Returns true if the current word was found in a dictionary.
   bool WordIsFromDictionary() const;
+
+  // Returns the number of blanks before the current word.
+  int BlanksBeforeWord() const;
 
   // Returns true if the current word is numeric.
   bool WordIsNumeric() const;
@@ -128,19 +138,30 @@ class TESS_API LTRResultIterator : public PageIterator {
 
   // Returns the pointer to ParamsTrainingBundle stored in the BlamerBundle
   // of the current word.
-  void *GetParamsTrainingBundle() const;
+  const void *GetParamsTrainingBundle() const;
 
   // Returns a pointer to the string with blamer information for this word.
-  // Assumes that the word's blamer_bundle is not NULL.
+  // Assumes that the word's blamer_bundle is not nullptr.
   const char *GetBlamerDebug() const;
 
   // Returns a pointer to the string with misadaption information for this word.
-  // Assumes that the word's blamer_bundle is not NULL.
+  // Assumes that the word's blamer_bundle is not nullptr.
   const char *GetBlamerMisadaptionDebug() const;
+
+  // Returns true if a truth string was recorded for the current word.
+  bool HasTruthString() const;
+
+  // Returns true if the given string is equivalent to the truth string for
+  // the current word.
+  bool EquivalentToTruth(const char *str) const;
 
   // Returns a null terminated UTF-8 encoded truth string for the current word.
   // Use delete [] to free after use.
   char* WordTruthUTF8Text() const;
+
+  // Returns a null terminated UTF-8 encoded normalized OCR string for the
+  // current word. Use delete [] to free after use.
+  char* WordNormedUTF8Text() const;
 
   // Returns a pointer to serialized choice lattice.
   // Fills lattice_size with the number of bytes in lattice data.
@@ -200,4 +221,4 @@ class ChoiceIterator {
 
 }  // namespace tesseract.
 
-#endif  // TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H__
+#endif  // TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H_

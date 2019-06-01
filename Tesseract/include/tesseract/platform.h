@@ -17,32 +17,39 @@
 //
 ///////////////////////////////////////////////////////////////////////
 
-#ifndef TESSERACT_CCUTIL_PLATFORM_H__
-#define TESSERACT_CCUTIL_PLATFORM_H__
+#ifndef TESSERACT_CCUTIL_PLATFORM_H_
+#define TESSERACT_CCUTIL_PLATFORM_H_
 
 #define DLLSYM
 #ifdef _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif /* NOMINMAX */
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
 #ifdef __GNUC__
 #define ultoa _ultoa
-typedef struct _BLOB {
-  unsigned int cbSize;
-  char *pBlobData;
-} BLOB, *LPBLOB;
 #endif  /* __GNUC__ */
 #define SIGNED
-#define snprintf _snprintf
-#if (_MSC_VER <= 1400)
-#define vsnprintf _vsnprintf
-#endif /* _WIN32 */
 #else
-#define __UNIX__
+#ifdef __cplusplus
+#include <climits>
+#else /* C compiler*/
 #include <limits.h>
+#endif /* __cplusplus */
 #ifndef PATH_MAX
 #define MAX_PATH 4096
 #else
 #define MAX_PATH PATH_MAX
 #endif
 #define SIGNED signed
+#endif
+
+#if defined(_WIN32) || defined(__CYGWIN__)
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 #endif
 
 #if defined(_WIN32) || defined(__CYGWIN__)
@@ -69,4 +76,4 @@ typedef struct _BLOB {
     #endif
 #endif
 
-#endif  // TESSERACT_CCUTIL_PLATFORM_H__
+#endif  // TESSERACT_CCUTIL_PLATFORM_H_
