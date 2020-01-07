@@ -5,8 +5,8 @@ includedir=/Users/damians/Desktop/iffmpeg/include
 
 Name: libavfilter
 Description: FFmpeg audio/video filtering library
-Version: 7.16.100
-Requires: libswresample >= 3.1.100, libavutil >= 56.14.100
+Version: 7.57.100
+Requires: libswresample >= 3.5.100, libavutil >= 56.31.100
 Requires.private: 
 Conflicts:
 Libs: -L${libdir}  -lavfilter -pthread -lm
