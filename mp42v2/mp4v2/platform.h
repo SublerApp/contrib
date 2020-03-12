@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdbool.h>
 
 // Thanks, MSFT, for making C99 a total PITA.  Declare this not to define any stdint stuff; this is useful
 // if you're going to be using mp4v2 on windows with some other library that defines its own stdint.

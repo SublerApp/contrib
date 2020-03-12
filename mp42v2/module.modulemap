@@ -1,0 +1,4 @@
+// mp42v2/module.modulemap
+module mp4v2 {
+    header "mp4v2.h"
+}
