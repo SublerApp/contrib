@@ -332,6 +332,14 @@ MP4TrackId MP4AddH263VideoTrack(
     uint32_t      avgBitrate,
     uint32_t      maxBitrate );
 
+MP4V2_EXPORT
+MP4TrackId MP4AddAV1VideoTrack(
+    MP4FileHandle hFile,
+    uint32_t      timeScale,
+    MP4Duration   sampleDuration,
+    uint16_t      width,
+    uint16_t      height );
+
 /** Add a hint track.
  *
  *  MP4AddHintTrack adds a hint track to the mp4 file. A hint track is used
@@ -431,6 +439,23 @@ MP4TrackId MP4AddColr(
     uint16_t      primary,
     uint16_t      transfer,
     uint16_t      matrix );
+
+MP4V2_EXPORT
+MP4TrackId MP4SetContentLightMetadata(
+    MP4FileHandle hFile,
+    MP4TrackId refTrackId,
+    uint32_t maxCLL,
+    uint32_t maxFALL);
+
+MP4V2_EXPORT
+MP4TrackId MP4SetMasteringDisplayMetadata(
+    MP4FileHandle hFile, MP4TrackId refTrackId,
+    uint16_t displayPrimariesGX, uint16_t displayPrimariesGY,
+    uint16_t displayPrimariesBX, uint16_t displayPrimariesBY,
+    uint16_t displayPrimariesRX, uint16_t displayPrimariesRY,
+    uint16_t whitePointX, uint16_t whitePointY,
+    uint32_t maxDisplayMasteringLuminance,
+    uint32_t minDisplayMasteringLuminance);
 
 MP4V2_EXPORT
 MP4TrackId MP4CloneTrack(
