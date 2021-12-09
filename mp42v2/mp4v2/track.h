@@ -273,7 +273,28 @@ MP4TrackId MP4AddH265VideoTrack(
     MP4Duration   sampleDuration,
     uint16_t      width,
     uint16_t      height,
+    const uint8_t *magicCookie,
+    uint32_t magicCookieSize,
     bool completeness );
+
+MP4V2_EXPORT
+MP4TrackId MP4AddDolbyVisionH265VideoTrack(
+    MP4FileHandle hFile,
+    uint32_t timeScale,
+    MP4Duration sampleDuration,
+    uint16_t width,
+    uint16_t height,
+    const uint8_t *magicCookie,
+    uint32_t magicCookieSize,
+    uint8_t versionMajor,
+    uint8_t versionMinor,
+    uint8_t profile,
+    uint8_t level,
+    bool rpuPresentFlag,
+    bool elPresentFlag,
+    bool blPresentFlag,
+    uint8_t blSignalCompatibilityId,
+    bool complete );
 
 MP4V2_EXPORT
 MP4TrackId MP4AddH264VideoTrack(
@@ -338,7 +359,9 @@ MP4TrackId MP4AddAV1VideoTrack(
     uint32_t      timeScale,
     MP4Duration   sampleDuration,
     uint16_t      width,
-    uint16_t      height );
+    uint16_t      height,
+    const uint8_t *magicCookie,
+    uint32_t magicCookieSize);
 
 /** Add a hint track.
  *
@@ -456,6 +479,24 @@ MP4TrackId MP4SetMasteringDisplayMetadata(
     uint16_t whitePointX, uint16_t whitePointY,
     uint32_t maxDisplayMasteringLuminance,
     uint32_t minDisplayMasteringLuminance);
+
+MP4V2_EXPORT
+MP4TrackId MP4SetDolbyVisionMetadata(
+    MP4FileHandle hFile, MP4TrackId refTrackId,
+    uint8_t versionMajor,
+    uint8_t versionMinor,
+    uint8_t profile,
+    uint8_t level,
+    bool rpuPresentFlag,
+    bool elPresentFlag,
+    bool blPresentFlag,
+    uint8_t blSignalCompatibilityId);
+
+MP4V2_EXPORT
+MP4TrackId MP4SetDolbyVisionELConfiguration(
+    MP4FileHandle hFile, MP4TrackId refTrackId,
+    const uint8_t *config,
+    uint32_t configSize);
 
 MP4V2_EXPORT
 MP4TrackId MP4CloneTrack(
