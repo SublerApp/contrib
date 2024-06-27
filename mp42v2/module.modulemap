@@ -1,5 +1,0 @@
-// mp42v2/module.modulemap
-module mp4v2 [system] {
-    umbrella header "mp4v2.h"
-    export *
-}

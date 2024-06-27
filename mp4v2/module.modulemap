@@ -1,0 +1,4 @@
+module CMP42 [system] [extern_c] {
+    header "mp4v2.h"
+    export *
+}
